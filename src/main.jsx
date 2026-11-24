@@ -403,7 +403,7 @@ function App() {
   return <div className="shell spatial-shell">
     <a href="#contenido" className="skip" onClick={event => { event.preventDefault(); document.querySelector('main').focus(); }}>Saltar al contenido</a>
     <aside className="sidebar">
-      <a className="brand" href="#pizarra"><div className="brand-icon"><Icon name="pizarra" /></div><span>Aula Integrada<small>UTA · FISEI</small></span></a>
+      <a className="brand" href="#pizarra"><div className="brand-icon"><Icon name="pizarra" /></div><span>MySubs Smart<small>UTA · FISEI</small></span></a>
       <nav aria-label="Navegación principal">
         <a href="#pizarra" aria-current={route === 'pizarra' ? 'page' : undefined}><Icon name="pizarra" /> Mapa completo</a>
         <a href="#documentos" aria-current={library ? 'page' : undefined}><Icon name="documentos" /> Documentos</a>
