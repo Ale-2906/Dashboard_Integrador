@@ -552,3 +552,19 @@ dialog { background: var(--panel); }
 .resource-links { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 8px 0 0; }
 .resource-links .button { text-align: left; border-color: #34516a; color: #a8eaf6; font-size: .78rem; padding: 5px 8px; }
 .resource-links .button span { flex: none; }
+
+
+.laboral-capture {
+  margin: 16px 0 0;
+  padding: clamp(9px, 2vw, 14px);
+  border: 1px solid #6851a3;
+  border-radius: 14px;
+  background: linear-gradient(138deg, #282046, #121b30 65%);
+  box-shadow: 0 8px 20px #06091165;
+}
+.laboral-capture figcaption { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 9px; }
+.laboral-capture figcaption span { color: #d2bdf8; font-size: .78rem; }
+.laboral-capture > a { display: block; overflow: hidden; border: 1px solid #8d75c4; border-radius: 9px; background: #161c31; text-decoration: none; }
+.laboral-capture img { display: block; width: 100%; height: auto; }
+.capture-expand { display: block; padding: 6px 10px; text-align: right; color: #e0cbff; font-size: .78rem; }
+.laboral-capture > a:hover .capture-expand { background: #302450; text-decoration: underline; }

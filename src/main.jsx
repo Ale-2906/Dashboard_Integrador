@@ -302,6 +302,13 @@ function ModuleDashboard({ id, next, open }) {
             </div>
             {taskDocs.length > 0 && <div className="dashboard-evidence"><EvidenceList docs={taskDocs} id={id} open={open} /></div>}
             <ResourceLinks links={activityResources[id]?.[step]} />
+            {id === 'liquidacion' && step === 2 && <figure className="laboral-capture">
+              <figcaption><strong>Una pregunta de Laboral Hack</strong><span>Kahoot de legislación laboral</span></figcaption>
+              <a href={`${import.meta.env.BASE_URL}images/laboral-hack-kahoot.png`} target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del Kahoot de Laboral Hack">
+                <img src={`${import.meta.env.BASE_URL}images/laboral-hack-kahoot.png`} width="1912" height="811" loading="lazy" alt="Pregunta del Kahoot sobre la causal aplicable cuando Daniela y su empleador acuerdan libremente terminar la relación laboral." />
+                <span className="capture-expand">Ampliar imagen <span aria-hidden="true">↗</span></span>
+              </a>
+            </figure>}
           </div>
         </section>
       </div>
