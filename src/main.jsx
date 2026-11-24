@@ -260,6 +260,31 @@ const dashboardContent = {
   },
 };
 
+const liquidationCaptures = {
+  2: {
+    file: 'laboral-hack-kahoot.png', width: 1912, height: 811,
+    title: 'Una pregunta de Laboral Hack', caption: 'Kahoot de legislación laboral',
+    alt: 'Pregunta del Kahoot sobre la causal aplicable cuando Daniela y su empleador acuerdan libremente terminar la relación laboral.',
+  },
+  3: {
+    file: 'panel-liquidaciones.png', width: 1915, height: 866,
+    title: 'Panel del sistema de liquidaciones', caption: 'MySubs Smart · Caso de demostración',
+    alt: 'Panel de MySubs Smart con un expediente laboral de demostración, el total de liquidaciones y los accesos a los PDF de paz y salvo y liquidación.',
+  },
+};
+
+const brandCapture = {
+  file: 'crucigrama-educaplay.png', width: 1896, height: 875,
+  title: 'Crucigrama de propiedad intelectual y marca', caption: 'Educaplay',
+  alt: 'Captura del crucigrama en Educaplay con la descripción de la actividad y la tabla de resultados.',
+};
+
+const surveyCapture = {
+  file: 'encuesta-mysubs.png', width: 1433, height: 868,
+  title: 'Estudio de mercado de MySubs', caption: 'Google Forms',
+  alt: 'Formulario del sondeo de MySubs con preguntas sobre pagos recurrentes y cantidad de suscripciones.',
+};
+
 function ModuleDashboard({ id, next, open }) {
   const module = modules[id];
   const { caption, subtitle, steps, metrics = module.metrics } = dashboardContent[id];
@@ -268,6 +293,12 @@ function ModuleDashboard({ id, next, open }) {
   const taskDocs = task.page ? [[task.evidenceLabel || 'Ver evidencia', task.page, task.origin]] : [];
   if (task.extra) taskDocs.push([...task.extra, task.origin]);
   const showSurvey = id === 'emprendimiento' && step === 3;
+  const pitchVideo = id === 'nomina' && step === 1 ? activityResources.nomina[step][0][1] : null;
+  const isBrandActivity = id === 'tributos' && step === 4;
+  const capture = showSurvey ? surveyCapture : isBrandActivity ? brandCapture : liquidationCaptures[id === 'liquidacion' ? step : -1];
+  const captureAction = showSurvey ? 'Abrir encuesta de MySubs' : isBrandActivity ? 'Abrir crucigrama en Educaplay' : null;
+  const activityUrl = captureAction ? activityResources[id][step][0][1] : null;
+  const captureUrl = capture && `${import.meta.env.BASE_URL}images/${capture.file}`;
 
   return <section className="workspace module-dashboard" aria-labelledby="dashboard-title">
     <header className="dashboard-header">
@@ -302,11 +333,18 @@ function ModuleDashboard({ id, next, open }) {
             </div>
             {taskDocs.length > 0 && <div className="dashboard-evidence"><EvidenceList docs={taskDocs} id={id} open={open} /></div>}
             <ResourceLinks links={activityResources[id]?.[step]} />
-            {id === 'liquidacion' && step === 2 && <figure className="laboral-capture">
-              <figcaption><strong>Una pregunta de Laboral Hack</strong><span>Kahoot de legislación laboral</span></figcaption>
-              <a href={`${import.meta.env.BASE_URL}images/laboral-hack-kahoot.png`} target="_blank" rel="noopener noreferrer" aria-label="Ampliar captura del Kahoot de Laboral Hack">
-                <img src={`${import.meta.env.BASE_URL}images/laboral-hack-kahoot.png`} width="1912" height="811" loading="lazy" alt="Pregunta del Kahoot sobre la causal aplicable cuando Daniela y su empleador acuerdan libremente terminar la relación laboral." />
-                <span className="capture-expand">Ampliar imagen <span aria-hidden="true">↗</span></span>
+            {pitchVideo && <figure className="laboral-capture">
+              <figcaption><strong>Pitch laboral</strong><span>Caso Plasticaucho</span></figcaption>
+              <a href={pitchVideo} target="_blank" rel="noopener noreferrer" aria-label="Ver pitch laboral en HeyGen">
+                <img src={`${import.meta.env.BASE_URL}images/pitch-laboral.png`} width="967" height="537" loading="lazy" alt="Presentador del video sobre el caso Plasticaucho." />
+                <span className="capture-expand">Ver video en HeyGen <span aria-hidden="true">?</span></span>
+              </a>
+            </figure>}
+            {capture && <figure className="laboral-capture">
+              <figcaption><strong>{capture.title}</strong><span>{capture.caption}</span></figcaption>
+              <a href={activityUrl || captureUrl} target="_blank" rel="noopener noreferrer" aria-label={captureAction || `Ampliar imagen: ${capture.title}`}>
+                <img src={captureUrl} width={capture.width} height={capture.height} loading="lazy" alt={capture.alt} />
+                <span className="capture-expand">{captureAction || "Ampliar imagen"} <span aria-hidden="true">↗</span></span>
               </a>
             </figure>}
           </div>
