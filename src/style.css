@@ -568,3 +568,11 @@ dialog { background: var(--panel); }
 .laboral-capture img { display: block; width: 100%; height: auto; }
 .capture-expand { display: block; padding: 6px 10px; text-align: right; color: #e0cbff; font-size: .78rem; }
 .laboral-capture > a:hover .capture-expand { background: #302450; text-decoration: underline; }
+
+
+.board-viability { margin-top: 10px; padding: 8px 10px; border: 1px solid #327962; border-radius: 8px; background: #102d2c; text-align: left; }
+.board-viability strong { color: #83efd0; font-size: .85rem; }
+.board-hub .board-viability p { margin-top: 3px; color: #c0ddd5; font-size: .74rem; }
+.board-viability button { display: inline-flex; align-items: center; gap: 3px; padding: 0; margin-top: 5px; border: 0; background: transparent; color: #a1f2db; font-size: .73rem; text-align: left; }
+.board-viability button:hover { text-decoration: underline; }
+.board-viability svg { width: 13px; height: 13px; }

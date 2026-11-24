@@ -211,6 +211,11 @@ function SemesterMap({ open }) {
           <h1>MySubs Smart <span>y gestión empresarial</span></h1>
           <p>Del plan de negocio a la formalización, la contratación y el cierre laboral.</p>
           <dl className="board-card-tiles"><div><dt>Inversión inicial</dt><dd>USD 1.900</dd></div><div><dt>CIIU principal</dt><dd>J62010101</dd></div><div><dt>Contratación</dt><dd>7 casos</dd></div></dl>
+          <div className="board-viability">
+            <strong>Viable según la proyección</strong>
+            <p>Con 400 clientes a USD 3 al mes, quedarían USD 322 mensuales y la inversión se recuperaría en unos 5,9 meses.</p>
+            <button onClick={() => open({ id: 'emprendimiento', origin: 'emprendimiento', page: 13, title: 'Estudio de viabilidad' })}>Ver estudio de viabilidad <Icon name="next" /></button>
+          </div>
           <a href="#emprendimiento">Ver proyecto</a><a href="#documentos">Repositorio <Icon name="next" /></a>
         </div>
         {entries.map(([id, module]) => <article className={`board-node ${id}`} key={id}>
